@@ -11,11 +11,11 @@
   <h1>NICEPAY TEST</h1>
   <button onclick="clientAuth()">clientAuth 결제하기</button>
 
-  <script src="https://pay.nicepay.co.kr/v1/js/pay/"></script> <!--nicepay payment-window client-auth-->
+  <script src="https://pay.nicepay.co.kr/v1/js/"></script>
 
   <script>
     function clientAuth() {
-      PAYNICE.requestPay({
+      AUTHNICE.requestPay({
         clientId: '{{clientId}}',
         method: 'card',
         orderId: '{{orderId}}',
@@ -23,7 +23,7 @@
         goodsName: '나이스페이-상품',
         returnUrl: 'http://localhost:5000/clientAuth',
         fnError: function (result) {
-          alert('고객용메시지 : ' + result.msg + '\n개발자확인용 : ' + result.errorMsg + '')
+          alert('개발자확인용 : ' + result.errorMsg + '')
         }
       });
     }

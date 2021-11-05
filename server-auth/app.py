@@ -4,8 +4,8 @@ import requests
 import uuid
 import json
 
-clientId = '클라이언트 키'
-secretKey = '시크릿 키'
+clientId = 'S2_af4543a0be4d49a98122e01ec2059a56'
+secretKey = '9eb85607103646da9f9c02b128f2e5ee'
 
 app = Flask(__name__)
 
@@ -28,7 +28,7 @@ def cancel():
 @app.route('/serverAuth', methods=['POST'])
 def clientAuth():
     try:
-        response = requests.post('https://api.nicepay.co.kr/v1/payments/' + request.form['tid'], 
+        response = requests.post('https://sandbox-api.nicepay.co.kr/v1/payments/' + request.form['tid'], 
             json={
                 'amount': request.form['amount']
             },
@@ -55,7 +55,7 @@ def clientAuth():
 @app.route('/cancel', methods=['POST'])
 def cancelAuth():
     try:
-        response = requests.post('https://api.nicepay.co.kr/v1/payments/'+ request.form['tid'] + '/cancel', 
+        response = requests.post('https://sandbox-api.nicepay.co.kr/v1/payments/'+ request.form['tid'] + '/cancel', 
             json={
                 'amount': request.form['amount'],
                 'reason' : 'test',

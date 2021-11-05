@@ -5,8 +5,8 @@ import requests
 import uuid
 import json
 
-clientId = '클라이언트 키'
-secretKey = '시크릿 키'
+clientId = 'S2_af4543a0be4d49a98122e01ec2059a56'
+secretKey = '9eb85607103646da9f9c02b128f2e5ee'
 
 key = secretKey[:32]
 iv = secretKey[:16]
@@ -30,7 +30,7 @@ def regist():
     plainText = ''.join(plainText)
 
     try:
-        response = requests.post('https://api.nicepay.co.kr/v1/subscribe/regist', 
+        response = requests.post('https://sandbox-api.nicepay.co.kr/v1/subscribe/regist', 
             json={
                 'encData': encrypt(plainText, key, iv),
                 'orderId': str(uuid.uuid4()),
@@ -62,7 +62,7 @@ def regist():
 
 def billing(bid):
     try:
-        response = requests.post('https://api.nicepay.co.kr/v1/subscribe/' + bid + '/payments', 
+        response = requests.post('https://sandbox-api.nicepay.co.kr/v1/subscribe/' + bid + '/payments', 
             json={
                 'orderId': str(uuid.uuid4()),
                 'amount': 1004,
@@ -87,7 +87,7 @@ def billing(bid):
 
 def expire(bid):
     try:
-        response = requests.post('https://api.nicepay.co.kr/v1/subscribe/' + bid + '/expire', 
+        response = requests.post('https://sandbox-api.nicepay.co.kr/v1/subscribe/' + bid + '/expire', 
             json={
                 'orderId': str(uuid.uuid4())
             },
